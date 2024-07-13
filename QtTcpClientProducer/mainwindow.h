@@ -13,13 +13,19 @@ class MainWindow : public QMainWindow
 {
   Q_OBJECT
 
+private:
+    bool setLoop;
+
 public:
   explicit MainWindow(QWidget *parent = 0);
   ~MainWindow();
   
-  void tcpConnect();
+
 public slots:
-  void putData();
+    void putData();
+    void stopData();
+    void tcpConnect();
+    void tcpDisconnect();
 private:
   Ui::MainWindow *ui;
   QTcpSocket *socket;
