@@ -6,35 +6,103 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>463</width>
-    <height>421</height>
+    <width>725</width>
+    <height>536</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QPushButton" name="pushButtonGet">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>60</y>
-      <width>101</width>
-      <height>29</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>getData</string>
-    </property>
-   </widget>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QLabel" name="labelIp">
+      <property name="text">
+       <string>Ip do servidor</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="3" rowspan="8">
+     <widget class="QTextBrowser" name="textBrowser"/>
+    </item>
+    <item row="1" column="0" colspan="2">
+     <widget class="QLineEdit" name="lineEditIpsServidor"/>
+    </item>
+    <item row="2" column="0">
+     <widget class="QPushButton" name="pushButtonConnect">
+      <property name="text">
+       <string>Connect</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QPushButton" name="pushButtonDesconnect">
+      <property name="text">
+       <string>Disconnect</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0" colspan="3">
+     <widget class="QListWidget" name="listWidgetIps"/>
+    </item>
+    <item row="4" column="1">
+     <widget class="QPushButton" name="pushButtonUpdate">
+      <property name="text">
+       <string>Update</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="0">
+     <widget class="QLabel" name="labelTiming">
+      <property name="text">
+       <string>Timing(s)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="0">
+     <widget class="QSlider" name="horizontalSliderTimer">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="2">
+     <widget class="QLabel" name="labelTimer">
+      <property name="text">
+       <string>0</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="0">
+     <widget class="QPushButton" name="pushButtonStart">
+      <property name="text">
+       <string>Start</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="1">
+     <widget class="QPushButton" name="pushButtonStop">
+      <property name="text">
+       <string>Stop</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="0">
+     <widget class="QLabel" name="labelStatus">
+      <property name="text">
+       <string>--------------------</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>463</width>
-     <height>22</height>
+     <width>725</width>
+     <height>23</height>
     </rect>
    </property>
   </widget>
@@ -50,5 +118,75 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>pushButtonConnect</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>tcpConnect()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>28</x>
+     <y>115</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>6</x>
+     <y>123</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonDesconnect</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>tcpDisconnect()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>395</x>
+     <y>117</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>266</x>
+     <y>113</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>horizontalSliderTimer</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>labelTimer</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>174</x>
+     <y>445</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>409</x>
+     <y>447</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonUpdate</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>getConnecetIps()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>365</x>
+     <y>391</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>353</x>
+     <y>408</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>tcpDisconnect()</slot>
+  <slot>tcpConnect()</slot>
+  <slot>getConnecetIps()</slot>
+ </slots>
 </ui>

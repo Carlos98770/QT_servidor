@@ -46,7 +46,7 @@ void MainWindow::putData(){
       qint64 msecdate;
       int min = (int)ui->lcdNumberMinino->value();
       int max = (int)ui->lcdNumberMaximo->value();
-      float aleatorio = min +  rand()%(max - min);
+      float aleatorio = min + rand()%(max -min +1);
 
 
       if(socket->state()== QAbstractSocket::ConnectedState){
@@ -54,7 +54,7 @@ void MainWindow::putData(){
         setLoop = true;
         while(setLoop){
             QCoreApplication::processEvents();
-            aleatorio = min +  rand()%(max - min);
+            aleatorio = min + rand()%(max -min +1);
             clock_t end = clock();
             float tempo = float(end - start)/CLOCKS_PER_SEC;
             msecdate = QDateTime::currentDateTime().toMSecsSinceEpoch();

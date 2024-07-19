@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QLCDNumber>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
@@ -29,22 +30,23 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralWidget;
-    QPushButton *pushButtonStart;
-    QPushButton *pushButtonStart_2;
-    QSlider *horizontalSliderTempo;
-    QTextBrowser *textBrowserSets;
-    QLabel *labelT;
+    QGridLayout *gridLayout;
     QLabel *labelValorTempo;
     QSlider *horizontalSliderMaximo;
-    QSlider *horizontalSliderMinino;
+    QLabel *labelT;
+    QPushButton *pushButtonStart_2;
+    QLabel *labelConnect;
     QLCDNumber *lcdNumberMinino;
+    QSlider *horizontalSliderMinino;
+    QSlider *horizontalSliderTempo;
+    QTextBrowser *textBrowserSets;
+    QLineEdit *lineEditIps;
+    QPushButton *pushButtonConnect;
     QLCDNumber *lcdNumberMaximo;
+    QPushButton *pushButtonDisconnect;
+    QPushButton *pushButtonStart;
     QLabel *labelMinimo;
     QLabel *labelMaximo;
-    QPushButton *pushButtonConnect;
-    QPushButton *pushButtonDisconnect;
-    QLabel *labelConnect;
-    QLineEdit *lineEditIps;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -53,66 +55,102 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(679, 438);
+        MainWindow->resize(739, 510);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName("centralWidget");
-        pushButtonStart = new QPushButton(centralWidget);
-        pushButtonStart->setObjectName("pushButtonStart");
-        pushButtonStart->setGeometry(QRect(40, 320, 131, 31));
-        pushButtonStart_2 = new QPushButton(centralWidget);
-        pushButtonStart_2->setObjectName("pushButtonStart_2");
-        pushButtonStart_2->setGeometry(QRect(180, 320, 131, 31));
-        horizontalSliderTempo = new QSlider(centralWidget);
-        horizontalSliderTempo->setObjectName("horizontalSliderTempo");
-        horizontalSliderTempo->setGeometry(QRect(120, 260, 161, 21));
-        horizontalSliderTempo->setOrientation(Qt::Horizontal);
-        textBrowserSets = new QTextBrowser(centralWidget);
-        textBrowserSets->setObjectName("textBrowserSets");
-        textBrowserSets->setGeometry(QRect(390, 20, 271, 331));
-        labelT = new QLabel(centralWidget);
-        labelT->setObjectName("labelT");
-        labelT->setGeometry(QRect(50, 260, 59, 18));
+        gridLayout = new QGridLayout(centralWidget);
+        gridLayout->setSpacing(6);
+        gridLayout->setContentsMargins(11, 11, 11, 11);
+        gridLayout->setObjectName("gridLayout");
         labelValorTempo = new QLabel(centralWidget);
         labelValorTempo->setObjectName("labelValorTempo");
-        labelValorTempo->setGeometry(QRect(290, 260, 59, 18));
+
+        gridLayout->addWidget(labelValorTempo, 7, 5, 1, 1);
+
         horizontalSliderMaximo = new QSlider(centralWidget);
         horizontalSliderMaximo->setObjectName("horizontalSliderMaximo");
-        horizontalSliderMaximo->setGeometry(QRect(100, 180, 160, 20));
         horizontalSliderMaximo->setMinimum(1);
         horizontalSliderMaximo->setOrientation(Qt::Horizontal);
-        horizontalSliderMinino = new QSlider(centralWidget);
-        horizontalSliderMinino->setObjectName("horizontalSliderMinino");
-        horizontalSliderMinino->setGeometry(QRect(100, 110, 160, 16));
-        horizontalSliderMinino->setOrientation(Qt::Horizontal);
-        lcdNumberMinino = new QLCDNumber(centralWidget);
-        lcdNumberMinino->setObjectName("lcdNumberMinino");
-        lcdNumberMinino->setGeometry(QRect(270, 110, 71, 41));
-        lcdNumberMaximo = new QLCDNumber(centralWidget);
-        lcdNumberMaximo->setObjectName("lcdNumberMaximo");
-        lcdNumberMaximo->setGeometry(QRect(270, 190, 71, 41));
-        lcdNumberMaximo->setProperty("intValue", QVariant(1));
-        labelMinimo = new QLabel(centralWidget);
-        labelMinimo->setObjectName("labelMinimo");
-        labelMinimo->setGeometry(QRect(280, 90, 59, 18));
-        labelMaximo = new QLabel(centralWidget);
-        labelMaximo->setObjectName("labelMaximo");
-        labelMaximo->setGeometry(QRect(280, 170, 59, 18));
-        pushButtonConnect = new QPushButton(centralWidget);
-        pushButtonConnect->setObjectName("pushButtonConnect");
-        pushButtonConnect->setGeometry(QRect(40, 60, 82, 26));
-        pushButtonDisconnect = new QPushButton(centralWidget);
-        pushButtonDisconnect->setObjectName("pushButtonDisconnect");
-        pushButtonDisconnect->setGeometry(QRect(130, 60, 82, 26));
+
+        gridLayout->addWidget(horizontalSliderMaximo, 6, 0, 1, 4);
+
+        labelT = new QLabel(centralWidget);
+        labelT->setObjectName("labelT");
+
+        gridLayout->addWidget(labelT, 7, 0, 1, 1);
+
+        pushButtonStart_2 = new QPushButton(centralWidget);
+        pushButtonStart_2->setObjectName("pushButtonStart_2");
+
+        gridLayout->addWidget(pushButtonStart_2, 8, 3, 1, 3);
+
         labelConnect = new QLabel(centralWidget);
         labelConnect->setObjectName("labelConnect");
-        labelConnect->setGeometry(QRect(10, 360, 71, 18));
+
+        gridLayout->addWidget(labelConnect, 9, 0, 1, 1);
+
+        lcdNumberMinino = new QLCDNumber(centralWidget);
+        lcdNumberMinino->setObjectName("lcdNumberMinino");
+
+        gridLayout->addWidget(lcdNumberMinino, 3, 4, 1, 2);
+
+        horizontalSliderMinino = new QSlider(centralWidget);
+        horizontalSliderMinino->setObjectName("horizontalSliderMinino");
+        horizontalSliderMinino->setOrientation(Qt::Horizontal);
+
+        gridLayout->addWidget(horizontalSliderMinino, 3, 0, 1, 4);
+
+        horizontalSliderTempo = new QSlider(centralWidget);
+        horizontalSliderTempo->setObjectName("horizontalSliderTempo");
+        horizontalSliderTempo->setOrientation(Qt::Horizontal);
+
+        gridLayout->addWidget(horizontalSliderTempo, 7, 1, 1, 4);
+
+        textBrowserSets = new QTextBrowser(centralWidget);
+        textBrowserSets->setObjectName("textBrowserSets");
+
+        gridLayout->addWidget(textBrowserSets, 0, 6, 9, 1);
+
         lineEditIps = new QLineEdit(centralWidget);
         lineEditIps->setObjectName("lineEditIps");
-        lineEditIps->setGeometry(QRect(40, 20, 331, 31));
+
+        gridLayout->addWidget(lineEditIps, 0, 0, 1, 6);
+
+        pushButtonConnect = new QPushButton(centralWidget);
+        pushButtonConnect->setObjectName("pushButtonConnect");
+
+        gridLayout->addWidget(pushButtonConnect, 1, 0, 1, 2);
+
+        lcdNumberMaximo = new QLCDNumber(centralWidget);
+        lcdNumberMaximo->setObjectName("lcdNumberMaximo");
+        lcdNumberMaximo->setProperty("intValue", QVariant(1));
+
+        gridLayout->addWidget(lcdNumberMaximo, 6, 4, 1, 2);
+
+        pushButtonDisconnect = new QPushButton(centralWidget);
+        pushButtonDisconnect->setObjectName("pushButtonDisconnect");
+
+        gridLayout->addWidget(pushButtonDisconnect, 1, 2, 1, 2);
+
+        pushButtonStart = new QPushButton(centralWidget);
+        pushButtonStart->setObjectName("pushButtonStart");
+
+        gridLayout->addWidget(pushButtonStart, 8, 0, 1, 3);
+
+        labelMinimo = new QLabel(centralWidget);
+        labelMinimo->setObjectName("labelMinimo");
+
+        gridLayout->addWidget(labelMinimo, 2, 5, 1, 1);
+
+        labelMaximo = new QLabel(centralWidget);
+        labelMaximo->setObjectName("labelMaximo");
+
+        gridLayout->addWidget(labelMaximo, 5, 5, 1, 1);
+
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName("menuBar");
-        menuBar->setGeometry(QRect(0, 0, 679, 23));
+        menuBar->setGeometry(QRect(0, 0, 739, 23));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName("mainToolBar");
@@ -135,15 +173,15 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        pushButtonStart->setText(QCoreApplication::translate("MainWindow", "Start", nullptr));
-        pushButtonStart_2->setText(QCoreApplication::translate("MainWindow", "Stop", nullptr));
-        labelT->setText(QCoreApplication::translate("MainWindow", "Timing(s)", nullptr));
         labelValorTempo->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
-        labelMinimo->setText(QCoreApplication::translate("MainWindow", "Min", nullptr));
-        labelMaximo->setText(QCoreApplication::translate("MainWindow", "Max", nullptr));
+        labelT->setText(QCoreApplication::translate("MainWindow", "Timing(s)", nullptr));
+        pushButtonStart_2->setText(QCoreApplication::translate("MainWindow", "Stop", nullptr));
+        labelConnect->setText(QCoreApplication::translate("MainWindow", "----------------", nullptr));
         pushButtonConnect->setText(QCoreApplication::translate("MainWindow", "Connect", nullptr));
         pushButtonDisconnect->setText(QCoreApplication::translate("MainWindow", "Disconnect", nullptr));
-        labelConnect->setText(QCoreApplication::translate("MainWindow", "----------------", nullptr));
+        pushButtonStart->setText(QCoreApplication::translate("MainWindow", "Start", nullptr));
+        labelMinimo->setText(QCoreApplication::translate("MainWindow", "Min", nullptr));
+        labelMaximo->setText(QCoreApplication::translate("MainWindow", "Max", nullptr));
     } // retranslateUi
 
 };
