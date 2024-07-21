@@ -8,6 +8,7 @@
 
 Plotter::Plotter(QWidget *parent)
     : QWidget{parent}
+
 {}
 
 void Plotter::paintEvent(QPaintEvent *event)
@@ -30,6 +31,17 @@ void Plotter::paintEvent(QPaintEvent *event)
     pen.setColor(QColor(0,0,255));
     pen.setWidth(3);
     painter.setPen(pen);
+
+    std::cout << clear << std::endl;
+
+    if(clear){
+        clear = false;
+        std::cout << "ENTROU " << std::endl;
+
+
+        return;
+    }
+
 
     std::vector<double> num,tim;
 
@@ -55,11 +67,8 @@ void Plotter::paintEvent(QPaintEvent *event)
     }
 
     for(int j=0; j < len -1;j++){
-        if(j < 1){
-            painter.drawLine(0,height(),j,height());
-        }else{
-            painter.drawLine(tim[j],num[j],tim[j+1],num[j+1]);
-        }
+        painter.drawLine(tim[j],num[j],tim[j+1],num[j+1]);
+
     }
 }
 
@@ -70,4 +79,13 @@ void Plotter::receberValores(long &timerNews, int &numerosNews)
     numero.push_back(numerosNews);
     repaint();
 
+}
+
+void Plotter::rePaint()
+{
+
+    clear = true;
+    timer.clear();
+    numero.clear();
+    repaint();
 }

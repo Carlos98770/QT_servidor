@@ -142,8 +142,8 @@
    <slot>tcpConnect()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>31</x>
-     <y>143</y>
+     <x>41</x>
+     <y>131</y>
     </hint>
     <hint type="destinationlabel">
      <x>6</x>
@@ -158,8 +158,8 @@
    <slot>tcpDisconnect()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>279</x>
-     <y>143</y>
+     <x>433</x>
+     <y>131</y>
     </hint>
     <hint type="destinationlabel">
      <x>266</x>
@@ -174,12 +174,12 @@
    <slot>setNum(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>176</x>
-     <y>423</y>
+     <x>186</x>
+     <y>464</y>
     </hint>
     <hint type="destinationlabel">
-     <x>305</x>
-     <y>437</y>
+     <x>746</x>
+     <y>521</y>
     </hint>
    </hints>
   </connection>
@@ -190,8 +190,8 @@
    <slot>getConnecetIps()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>91</x>
-     <y>375</y>
+     <x>316</x>
+     <y>417</y>
     </hint>
     <hint type="destinationlabel">
      <x>353</x>
@@ -222,8 +222,8 @@
    <slot>stopTempo()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>286</x>
-     <y>455</y>
+     <x>433</x>
+     <y>496</y>
     </hint>
     <hint type="destinationlabel">
      <x>364</x>
@@ -238,8 +238,8 @@
    <slot>startTempo()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>111</x>
-     <y>455</y>
+     <x>121</x>
+     <y>496</y>
     </hint>
     <hint type="destinationlabel">
      <x>121</x>
@@ -256,5 +256,6 @@
   <slot>stopData()</slot>
   <slot>startTempo()</slot>
   <slot>stopTempo()</slot>
+  <slot>rePaint()</slot>
  </slots>
 </ui>

@@ -11,10 +11,15 @@ public:
     explicit Plotter(QWidget *parent = nullptr);
     void paintEvent(QPaintEvent *event);
     void receberValores(long &timerNews,int & numerosNews);
+    void rePaint();
 
 private:
     std::vector<long> timer;
     std::vector<int> numero;
+
+
+
+    bool clear = false;
 
 signals:
 };

@@ -66,8 +66,14 @@ void MainWindow::getConnecetIps(){
 void MainWindow::ipAtual(){
     QListWidgetItem *currentItem = ui->listWidgetIps->currentItem();
     QString ip = currentItem->text();
-    ipSelecionado = ip;
+    if(!(ip == ipSelecionado)){
+        ipSelecionado = ip;
+        ui->widgetGrafico->rePaint();
+
+    }
+
     flag = true;
+
 }
 
 void MainWindow::timerEvent(QTimerEvent *timer)
