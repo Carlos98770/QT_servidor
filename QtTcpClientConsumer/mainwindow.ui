@@ -6,93 +6,101 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>725</width>
-    <height>536</height>
+    <width>876</width>
+    <height>554</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QGridLayout" name="gridLayout">
+   <layout class="QGridLayout" name="gridLayout_3">
     <item row="0" column="0">
-     <widget class="QLabel" name="labelIp">
-      <property name="text">
-       <string>Ip do servidor</string>
-      </property>
-     </widget>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="2" column="1">
+       <widget class="QPushButton" name="pushButtonDesconnect">
+        <property name="text">
+         <string>Disconnect</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QPushButton" name="pushButtonConnect">
+        <property name="text">
+         <string>Connect</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" colspan="2">
+       <widget class="QListWidget" name="listWidgetIps"/>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="labelIp">
+        <property name="text">
+         <string>Ip do servidor</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" colspan="2">
+       <widget class="QLineEdit" name="lineEditIpsServidor"/>
+      </item>
+      <item row="4" column="1">
+       <widget class="QPushButton" name="pushButtonUpdate">
+        <property name="text">
+         <string>Update</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </item>
-    <item row="0" column="3" rowspan="8">
-     <widget class="QTextBrowser" name="textBrowser"/>
+    <item row="1" column="0">
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
+       <widget class="QLabel" name="labelTiming">
+        <property name="text">
+         <string>Timing(s)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" colspan="2">
+       <widget class="QSlider" name="horizontalSliderTimer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QPushButton" name="pushButtonStart">
+        <property name="text">
+         <string>Start</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QPushButton" name="pushButtonStop">
+        <property name="text">
+         <string>Stop</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="labelStatus">
+        <property name="text">
+         <string>--------------------</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </item>
-    <item row="1" column="0" colspan="2">
-     <widget class="QLineEdit" name="lineEditIpsServidor"/>
-    </item>
-    <item row="2" column="0">
-     <widget class="QPushButton" name="pushButtonConnect">
-      <property name="text">
-       <string>Connect</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="1">
-     <widget class="QPushButton" name="pushButtonDesconnect">
-      <property name="text">
-       <string>Disconnect</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="0" colspan="3">
-     <widget class="QListWidget" name="listWidgetIps"/>
-    </item>
-    <item row="4" column="1">
-     <widget class="QPushButton" name="pushButtonUpdate">
-      <property name="text">
-       <string>Update</string>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="0">
-     <widget class="QLabel" name="labelTiming">
-      <property name="text">
-       <string>Timing(s)</string>
-      </property>
-     </widget>
-    </item>
-    <item row="6" column="0">
-     <widget class="QSlider" name="horizontalSliderTimer">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
-    </item>
-    <item row="6" column="2">
+    <item row="1" column="1">
      <widget class="QLabel" name="labelTimer">
       <property name="text">
        <string>0</string>
       </property>
      </widget>
     </item>
-    <item row="7" column="0">
-     <widget class="QPushButton" name="pushButtonStart">
-      <property name="text">
-       <string>Start</string>
-      </property>
-     </widget>
-    </item>
-    <item row="7" column="1">
-     <widget class="QPushButton" name="pushButtonStop">
-      <property name="text">
-       <string>Stop</string>
-      </property>
-     </widget>
-    </item>
-    <item row="8" column="0">
-     <widget class="QLabel" name="labelStatus">
-      <property name="text">
-       <string>--------------------</string>
-      </property>
-     </widget>
+    <item row="0" column="1">
+     <widget class="Plotter" name="widgetGrafico" native="true"/>
     </item>
    </layout>
   </widget>
@@ -101,7 +109,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>725</width>
+     <width>876</width>
      <height>23</height>
     </rect>
    </property>
@@ -117,6 +125,14 @@
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>Plotter</class>
+   <extends>QWidget</extends>
+   <header>plotter.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections>
   <connection>
@@ -126,8 +142,8 @@
    <slot>tcpConnect()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>28</x>
-     <y>115</y>
+     <x>31</x>
+     <y>143</y>
     </hint>
     <hint type="destinationlabel">
      <x>6</x>
@@ -142,8 +158,8 @@
    <slot>tcpDisconnect()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>395</x>
-     <y>117</y>
+     <x>279</x>
+     <y>143</y>
     </hint>
     <hint type="destinationlabel">
      <x>266</x>
@@ -158,12 +174,12 @@
    <slot>setNum(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>174</x>
-     <y>445</y>
+     <x>176</x>
+     <y>423</y>
     </hint>
     <hint type="destinationlabel">
-     <x>409</x>
-     <y>447</y>
+     <x>305</x>
+     <y>437</y>
     </hint>
    </hints>
   </connection>
@@ -174,12 +190,60 @@
    <slot>getConnecetIps()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>365</x>
-     <y>391</y>
+     <x>91</x>
+     <y>375</y>
     </hint>
     <hint type="destinationlabel">
      <x>353</x>
      <y>408</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>listWidgetIps</sender>
+   <signal>itemClicked(QListWidgetItem*)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>ipAtual()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>41</x>
+     <y>191</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>4</x>
+     <y>190</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonStop</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>stopTempo()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>286</x>
+     <y>455</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>364</x>
+     <y>483</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonStart</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>startTempo()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>111</x>
+     <y>455</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>121</x>
+     <y>481</y>
     </hint>
    </hints>
   </connection>
@@ -188,5 +252,9 @@
   <slot>tcpDisconnect()</slot>
   <slot>tcpConnect()</slot>
   <slot>getConnecetIps()</slot>
+  <slot>ipAtual()</slot>
+  <slot>stopData()</slot>
+  <slot>startTempo()</slot>
+  <slot>stopTempo()</slot>
  </slots>
 </ui>
