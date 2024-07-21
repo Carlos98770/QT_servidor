@@ -32,13 +32,9 @@ void Plotter::paintEvent(QPaintEvent *event)
     pen.setWidth(3);
     painter.setPen(pen);
 
-    std::cout << clear << std::endl;
 
     if(clear){
         clear = false;
-        std::cout << "ENTROU " << std::endl;
-
-
         return;
     }
 
