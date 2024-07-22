@@ -4,8 +4,10 @@
 #include <iostream>
 #include <time.h>
 #include <QNetworkInterface>
+#include <string>
 
 bool flag = false;
+
 
 MainWindow::MainWindow(QWidget *parent) :
   QMainWindow(parent),
@@ -18,14 +20,6 @@ MainWindow::MainWindow(QWidget *parent) :
   setLoop = false;
   ipSelecionado = 0;
   tempo = 0;
-  //dados= new Plotter;
-
-  /*
-  connect(ui->pushButtonStart,
-          SIGNAL(clicked(bool)),
-          this,
-          SLOT(getData()));
-    */
 }
 
 void MainWindow::tcpConnect(){
@@ -49,6 +43,7 @@ void MainWindow::tcpDisconnect(){
 
 void MainWindow::getConnecetIps(){
 
+    ipSelecionado = 0;
     ui->listWidgetIps->clear();
     //Usando list do servidor para listar os ips que forneceram dados
     socket->write("list\r\n");
@@ -61,11 +56,13 @@ void MainWindow::getConnecetIps(){
         ui->listWidgetIps->addItem(str);
     }
 
+
 }
 
 void MainWindow::ipAtual(){
     QListWidgetItem *currentItem = ui->listWidgetIps->currentItem();
     QString ip = currentItem->text();
+    auxip = ip;
     if(!(ip == ipSelecionado)){
         ipSelecionado = ip;
         ui->widgetGrafico->rePaint();
@@ -83,10 +80,12 @@ void MainWindow::timerEvent(QTimerEvent *timer)
 
 void MainWindow::startTempo()
 {
-    //multiplicando por 1000 para ficar em segundos
-    if(flag)
+
+    if(flag || !(ipSelecionado.size() == 0) ){
         tempo = startTimer(ui->horizontalSliderTimer->value() * 1000);
-    //flag = true;
+
+    }
+    flag = true;
 }
 
 void MainWindow::stopTempo()
@@ -131,10 +130,8 @@ void MainWindow::getData(){
                       bool ok;
                       str = list.at(0);
                       timerNews.push_back(str.toLong());
-                      //std::cout << str.toStdString() << std::endl;
                       thetime = str.toLongLong(&ok);
                       str = list.at(1);
-                      //std::cout << str.toStdString() << std::endl;
                       numerosNews.push_back(str.toInt());
                       qDebug() << thetime << ": " << str;
 
